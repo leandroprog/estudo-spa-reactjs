@@ -67,9 +67,9 @@ const Blog = () => (
         <li><Link to="/blog/post-2">Post 2</Link></li>
       </ul>
       <Switch>
+        <Route exact path="/blog" render={ () => <NoPosts numberOfPost={2} />}/>
         <Route path="/blog/:post(post-1|post-2)" component={Post} />
         <Route component={Post404} />
-        <Route exact path="/blog" component={NoPosts} />
       </Switch>
     </div>
   )
@@ -81,8 +81,8 @@ const Blog = () => (
    </div>
  )
 
-const NoPosts = () => (
- <p>Selecione um post</p>
+const NoPosts = ({numberOfPost}) => (
+<p>Selecione um  dos {numberOfPost} post</p>
 )
 const Erro404 = () => (<h1>Página não encontrada</h1>)
 const Post404 = () => (<h1>Post não encontrado</h1>)
