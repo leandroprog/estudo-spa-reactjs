@@ -3,3 +3,12 @@
 body {
   font: 30px sans-serif;
 }
+
+a {
+  text-decoration: none;
+}
+a.active-link {
+  text-decoration: underline;
+  color: red;
+}
+

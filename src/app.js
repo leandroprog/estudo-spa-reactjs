@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { PureComponent } from 'react'
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom'
 
 import './css/style.css'
 
@@ -37,7 +37,7 @@ class App extends PureComponent {
         <div>
           {/* <this.state.Component>{this.state.title}</this.state.Component> */}
           <ul>
-            <li> <Link to='/'>Home</Link></li>
+            <li> <Link  to='/' exact>Home</Link></li>
             <li> <Link to='/sobre'>Sobre</Link></li>
             <li> <Link to='/blog'>Blog</Link></li>
             <li> <Link to='/contato'>Contato</Link></li>
@@ -86,5 +86,9 @@ const NoPosts = () => (
 )
 const Erro404 = () => (<h1>Página não encontrada</h1>)
 const Post404 = () => (<h1>Post não encontrado</h1>)
+
+const Link = (props) => (
+  <NavLink activeClassName="active-link"   {...props} />
+)
 
 export default App
