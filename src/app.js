@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { PureComponent } from 'react'
-import { BrowserRouter, Link, Route } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
 import './css/style.css'
 
@@ -35,7 +35,7 @@ class App extends PureComponent {
     return (
       <BrowserRouter>
         <div>
-          <this.state.Component>{this.state.title}</this.state.Component>
+          {/* <this.state.Component>{this.state.title}</this.state.Component> */}
           <ul>
             <li> <Link to='/'>Home</Link></li>
             <li> <Link to='/sobre'>Sobre</Link></li>
@@ -43,11 +43,13 @@ class App extends PureComponent {
             <li> <Link to='/contato'>Contato</Link></li>
           </ul>
 
+        <Switch>
           <Route path="/" component={Home} exact/>
           <Route path="/sobre" component={Sobre} />
           <Route path="/blog" component={Blog} />
           <Route path="/contato" component={Contato} />
-
+          <Route component={Erro404} />
+        </Switch>
         </div>
       </BrowserRouter>
     )
@@ -76,8 +78,9 @@ const Blog = () => (
    </div>
  )
 
- const NoPosts = () => (
+const NoPosts = () => (
  <p>Selecione um post</p>
 )
+const Erro404 = () => (<h1>Página não encontrada</h1>)
 
 export default App
