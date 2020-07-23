@@ -36,14 +36,24 @@ class App extends PureComponent {
       <BrowserRouter>
         <div>
           <this.state.Component>{this.state.title}</this.state.Component>
-          <Link to='/sobre'>Sobre</Link>
+
+          <Route path="/" component={Home} exact/>
           <Route path="/sobre" component={Sobre} />
+          <Route path="/contato" component={Contato} />
+          <ul>
+            <li> <Link to='/'>Home</Link></li>
+            <li> <Link to='/sobre'>Sobre</Link></li>
+            <li> <Link to='/contato'>Contato</Link></li>
+          </ul>
+
         </div>
       </BrowserRouter>
     )
   }
 }
 
+const Home = () => (<h1>Home</h1>)
 const Sobre = () => (<h1>Sobre</h1>)
+const Contato = () => (<h1>Contato</h1>)
 
 export default App
