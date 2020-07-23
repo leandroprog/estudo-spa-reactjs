@@ -45,9 +45,8 @@ class App extends PureComponent {
 
         <Switch>
           <Route path="/" component={Home} exact/>
-          <Route path="/sobre" component={Sobre} />
+          <Route path="/(sobre|contato)" component={Page} />
           <Route path="/blog" component={Blog} />
-          <Route path="/contato" component={Contato} />
           <Route component={Erro404} />
         </Switch>
         </div>
@@ -58,6 +57,7 @@ class App extends PureComponent {
 
 const Home = () => (<h1>Home</h1>)
 const Sobre = () => (<h1>Sobre</h1>)
+const Page = ({ match }) => (<h1>{match.url}</h1>)
 const Contato = () => (<h1>Contato</h1>)
 const Blog = () => (
     <div>
@@ -66,8 +66,11 @@ const Blog = () => (
         <li><Link to="/blog/post-1">Post 1</Link></li>
         <li><Link to="/blog/post-2">Post 2</Link></li>
       </ul>
-      <Route path="/blog/:post" component={Post} />
-      <Route exact path="/blog" component={NoPosts} />
+      <Switch>
+        <Route path="/blog/:post(post-1|post-2)" component={Post} />
+        <Route component={Post404} />
+        <Route exact path="/blog" component={NoPosts} />
+      </Switch>
     </div>
   )
 
@@ -82,5 +85,6 @@ const NoPosts = () => (
  <p>Selecione um post</p>
 )
 const Erro404 = () => (<h1>Página não encontrada</h1>)
+const Post404 = () => (<h1>Post não encontrado</h1>)
 
 export default App
