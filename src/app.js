@@ -76,6 +76,13 @@ class App extends PureComponent {
 const Home = ({ match, location }) => (
   <div>
     {console.log("Home location", location)}
+    {
+      console.log('Location search', location.search.replace('?', '').split('&').reduce((acc, item) => {
+        const [key, value ] = item.split('=');
+        acc[key] = value;
+        return acc;
+      }, {}))
+    }
     <h1>Home</h1>
   </div>
 );
