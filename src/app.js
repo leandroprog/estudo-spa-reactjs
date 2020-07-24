@@ -69,23 +69,23 @@ class App extends PureComponent {
   }
 }
 
-const Home = ({ match }) => (
+const Home = ({ match, location }) => (
   <div>
-    {console.log("Home match", match)}
+    {console.log("Home location", location)}
     <h1>Home</h1>
   </div>
 );
 
-const Page = ({ match }) => (
+const Page = ({ match, location }) => (
   <div>
-    {console.log("Page match", match)}
+    {console.log("Page location", location)}
     <p>{match.url}</p>
   </div>
 );
 
-const Blog = ({ match }) => (
+const Blog = ({ match, location }) => (
   <div>
-    {console.log("Home match", match)}
+    {console.log("Home location", location)}
     <h1>Blog</h1>
     <ul>
       <li>
@@ -103,9 +103,9 @@ const Blog = ({ match }) => (
   </div>
 );
 
-const Post = ({ match }) => (
+const Post = ({ match, location }) => (
   <div>
-    {console.log("Post match", match)}
+    {console.log("Post location", location)}
     <h2>{match.params.post}</h2>
   </div>
 );
@@ -122,32 +122,15 @@ const Erro404 = ({ match }) => (
     <h1>Página não encontrada</h1>
   </div>
 );
-const Post404 = ({ match }) => (
+const Post404 = ({ match, location }) => (
   <div>
-    {console.log("Post404 match", match)}
+    {console.log("Post404 location", location)}
     <h1>Post não encontrado</h1>
   </div>
 );
 
-// const Link = (props) => (
-//   <NavLink activeClassName="active-link"   {...props} />
-// )
-
 const Link = (props) => (
-  <Route path={props.to} exact={props.exact}>
-    {({ match, history }) => (
-      <a
-        href={props.to}
-        style={match ? { color: "red" } : null}
-        onClick={(e) => {
-          e.preventDefault();
-          history.push(props.to);
-        }}
-      >
-        {props.children}
-      </a>
-    )}
-  </Route>
-);
+  <NavLink activeClassName="active-link"   {...props} />
+)
 
 export default App;
