@@ -87,8 +87,16 @@ const NoPosts = ({numberOfPost}) => (
 const Erro404 = () => (<h1>Página não encontrada</h1>)
 const Post404 = () => (<h1>Post não encontrado</h1>)
 
+// const Link = (props) => (
+//   <NavLink activeClassName="active-link"   {...props} />
+// )
+
 const Link = (props) => (
-  <NavLink activeClassName="active-link"   {...props} />
+  <Route path={props.to} exact={props.exact}>
+  {({match, history}) => (
+    <a href={props.to} style={match ? { color: 'red'}: null} onClick={(e) => {e.preventDefault(); history.push(props.to)} }>{props.children}</a>
+  )}
+</Route>
 )
 
 export default App
