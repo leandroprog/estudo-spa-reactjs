@@ -55,6 +55,7 @@ class App extends PureComponent {
               {" "}
               <Link to="/contato">Contato</Link>
             </li>
+            <li>< a href="#informacoes-do-site">Informações do site</a></li>
           </ul>
 
           <Switch>
@@ -63,6 +64,9 @@ class App extends PureComponent {
             <Route path="/blog" component={Blog} />
             <Route component={Erro404} />
           </Switch>
+          <div id="informacoes-do-site" style={{margin: '1000px 0'}}>
+            <h2>Informações do site</h2>
+          </div>
         </div>
       </BrowserRouter>
     );
