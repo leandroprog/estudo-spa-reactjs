@@ -39,7 +39,7 @@ class App extends PureComponent {
           <ul>
             <li>
               {" "}
-              <Link to="/" exact>
+              <Link to={{pathname: '/', state:{id: 'home'}}}exact>
                 Home
               </Link>
             </li>
