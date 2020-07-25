@@ -1,7 +1,7 @@
 "use strict";
 
 import React, { PureComponent } from "react";
-import { BrowserRouter, NavLink, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Switch, Redirect, Prompt } from "react-router-dom";
 
 import "./css/style.css";
 
@@ -57,6 +57,7 @@ class App extends PureComponent {
             </li>
             <li>< a href="#informacoes-do-site">Informações do site</a></li>
             <li><Link to='voltar-para-home'>Voltar para home</Link></li>
+            <li><Link to='/cadastro'>Cadastro</Link></li>
           </ul>
 
           <Switch>
@@ -64,6 +65,7 @@ class App extends PureComponent {
             <Redirect from='/voltar-para-home' to='/' />
             <Route path="/(sobre|contato)" component={Page} />
             <Route path="/blog" component={Blog} />
+            <Route path="/cadastro" component={Register} />
             {/* <Route path="/voltar-para-home" render={ () => <Redirect to='/' />} /> */}
             <Route component={Erro404} />
           </Switch>
@@ -145,6 +147,10 @@ const Post404 = ({ match, location, history }) => (
     {console.log("Home history", history)}
     <h1>Post não encontrado</h1>
   </div>
+);
+
+const Register = () => (
+  <Prompt when={true} message='Navegação bloqueada!'/>
 );
 
 const Link = (props) => (
