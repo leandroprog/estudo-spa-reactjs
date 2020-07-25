@@ -73,9 +73,10 @@ class App extends PureComponent {
   }
 }
 
-const Home = ({ match, location }) => (
+const Home = ({ match, location, history }) => (
   <div>
     {console.log("Home location", location)}
+    {console.log("Home history", history)}
     {
       console.log('Location search', location.search.replace('?', '').split('&').reduce((acc, item) => {
         const [key, value ] = item.split('=');
@@ -94,9 +95,10 @@ const Page = ({ match, location }) => (
   </div>
 );
 
-const Blog = ({ match, location }) => (
+const Blog = ({ match, location, history }) => (
   <div>
     {console.log("Home location", location)}
+    {console.log("Home history", history)}
     <h1>Blog</h1>
     <ul>
       <li>
@@ -114,9 +116,10 @@ const Blog = ({ match, location }) => (
   </div>
 );
 
-const Post = ({ match, location }) => (
+const Post = ({ match, location, history }) => (
   <div>
     {console.log("Post location", location)}
+    {console.log("Home history", history)}
     <h2>{match.params.post}</h2>
   </div>
 );
@@ -133,9 +136,10 @@ const Erro404 = ({ match }) => (
     <h1>Página não encontrada</h1>
   </div>
 );
-const Post404 = ({ match, location }) => (
+const Post404 = ({ match, location, history }) => (
   <div>
     {console.log("Post404 location", location)}
+    {console.log("Home history", history)}
     <h1>Post não encontrado</h1>
   </div>
 );
