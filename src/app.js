@@ -1,7 +1,7 @@
 "use strict";
 
 import React, { PureComponent } from "react";
-import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Switch, Redirect } from "react-router-dom";
 
 import "./css/style.css";
 
@@ -56,12 +56,15 @@ class App extends PureComponent {
               <Link to="/contato">Contato</Link>
             </li>
             <li>< a href="#informacoes-do-site">Informações do site</a></li>
+            <li><Link to='voltar-para-home'>Voltar para home</Link></li>
           </ul>
 
           <Switch>
             <Route path="/" component={Home} exact />
+            <Redirect from='/voltar-para-home' to='/' />
             <Route path="/(sobre|contato)" component={Page} />
             <Route path="/blog" component={Blog} />
+            {/* <Route path="/voltar-para-home" render={ () => <Redirect to='/' />} /> */}
             <Route component={Erro404} />
           </Switch>
           <div id="informacoes-do-site" style={{margin: '1000px 0'}}>
