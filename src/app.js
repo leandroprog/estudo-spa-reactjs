@@ -1,9 +1,21 @@
 "use strict";
 
 import React, { PureComponent } from "react";
-import { BrowserRouter, NavLink, Route, Switch, Redirect, Prompt } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Switch, Redirect, Prompt, withRouter } from "react-router-dom";
 
 import "./css/style.css";
+
+const ButtonBack_ = ({history}) => (
+<button onClick={(e) => history.goBack()}>{'<-'}Voltar</button>
+)
+
+const ButtonBack = withRouter(ButtonBack_);
+
+const ButtonForward_ = ({history}) => (
+<button onClick={(e) => history.goForward()}>Próxima página {'->'}</button>
+)
+
+const ButtonForward = withRouter(ButtonForward_);
 
 class App extends PureComponent {
   constructor() {
@@ -35,7 +47,10 @@ class App extends PureComponent {
     return (
       <BrowserRouter>
         <div>
-          {/* <this.state.Component>{this.state.title}</this.state.Component> */}
+          <ul>
+            <li><ButtonBack /></li>
+            <li><ButtonForward /></li>
+          </ul>
           <ul>
             <li>
               {" "}
